@@ -1,0 +1,17 @@
+{
+  "name": "from-zero-to-build-react-project",
+  "version": "1.0.0",
+  "description": "react project",
+  "main": "index.js",
+  "repository": "git@github.com:minooo/FromZero.git",
+  "author": "minooo <552594996@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.12.0"
+  }
+}
