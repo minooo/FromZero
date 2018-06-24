@@ -6,8 +6,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin")
 module.exports = {
   mode: "development",
   entry: {
-    app: "./src/index.js",
-    print: "./src/print.js"
+    app: "./src/index.js"
   },
   devtool: "inline-source-map",
   devServer: {
@@ -27,16 +26,27 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(["dist"], { root: path.resolve(__dirname, "..") }),
     new HtmlWebpackPlugin({
-      title: "my titile"
+      title: "my titile",
+      favicon: "./src/favicon.ico",
+      template: "./src/index.html",
+      inject: true,
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve("dist")
+    pathinfo: true,
+    filename: 'static/js/[name].bundle.js',
+    chunkFilename: 'static/js/[name].chunk.js',
+    publicPath: "/",
   },
   module: {
     rules: [
+      {
+        // https://new.babeljs.io/docs/en/next/babel-preset-react.html
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+      },
       {
         test: /\.css$/,
         use: [
